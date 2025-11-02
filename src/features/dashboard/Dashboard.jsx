@@ -5,9 +5,18 @@ import { Sales } from "./Sales";
 import { Table } from "../../shared/components/table/Table";
 import { Filter } from "../../shared/components/filter/Filter";
 import { LastOrders } from "./LastOrders";
+import { useQuery } from "@tanstack/react-query";
+import { getOrders } from "../../services/apiOrders";
 
 function Dashboard() {
-  return (
+  const { isLoading } = useQuery({
+    queryKey: ["orders"],
+    queryFn: getOrders,
+  });
+
+  return isLoading ? (
+    <p>loading</p>
+  ) : (
     <div className="mx-auto grid w-[90%] max-w-[1200px] grid-cols-2 gap-10 overflow-y-auto py-4">
       <Table classes={"col-span-2"}>
         <Table.Header>

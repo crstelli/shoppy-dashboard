@@ -12,6 +12,7 @@ import { Categories } from "./features/categories/Categories";
 import { Orders } from "./features/orders/Orders";
 import { Users } from "./features/users/Users";
 import { Settings } from "./features/settings/Settings";
+import { Account } from "./features/account/Account";
 
 import { ProtectedRoute } from "./shared/components/ProtectedRoute";
 
@@ -40,6 +41,8 @@ export default function App() {
             <Route path="/orders" element={<Orders />} />
             <Route path="/users" element={<Users />} />
             <Route path="/settings" element={<Settings />} />
+
+            <Route path="/account" element={<Account />} />
           </Route>
         </Routes>
       </BrowserRouter>

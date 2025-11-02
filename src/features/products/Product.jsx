@@ -6,7 +6,7 @@ import { Table } from "../../shared/components/table/Table";
 import { Modal } from "../../shared/components/modal/Modal";
 import { Menus } from "../../shared/components/menus/Menus";
 
-import { DeleteModal } from "../../shared/components/DeleteModal";
+import { ConfirmModal } from "../../shared/components/ConfirmModal";
 import { Tag } from "../../shared/components/Tag";
 
 function Product({ product, gridCols }) {
@@ -53,7 +53,7 @@ function Product({ product, gridCols }) {
       )}
 
       {isDeleting && (
-        <DeleteModal
+        <ConfirmModal
           onConfirm={() => handleDelete(product.id)}
           onClose={() => setIsDeleting(false)}
         />
