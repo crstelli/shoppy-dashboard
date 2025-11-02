@@ -7,6 +7,7 @@ import { Filter } from "../../shared/components/filter/Filter";
 import { LastOrders } from "./LastOrders";
 import { useQuery } from "@tanstack/react-query";
 import { getOrders } from "../../services/apiOrders";
+import { Section } from "../../shared/components/Section";
 
 function Dashboard() {
   const { isLoading } = useQuery({
@@ -17,7 +18,7 @@ function Dashboard() {
   return isLoading ? (
     <p>loading</p>
   ) : (
-    <div className="mx-auto grid w-[90%] max-w-[1200px] grid-cols-2 gap-10 overflow-y-auto py-4">
+    <Section>
       <Table classes={"col-span-2"}>
         <Table.Header>
           <Table.Title>Dashboard</Table.Title>
@@ -34,7 +35,7 @@ function Dashboard() {
       <LastOrders />
       <OrdersStatus />
       <Sales />
-    </div>
+    </Section>
   );
 }
 

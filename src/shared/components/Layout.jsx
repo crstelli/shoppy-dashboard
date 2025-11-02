@@ -8,7 +8,7 @@ function Layout() {
     <main className="grid h-full w-full grid-cols-[auto_1fr] grid-rows-[auto_1fr] bg-gray-50">
       <Sidebar />
       <Header />
-      <div className="bg-gray-200/40 p-15">
+      <div className="bg-gray-200/40 p-15 dark:bg-gray-900">
         <Outlet />
       </div>
     </main>

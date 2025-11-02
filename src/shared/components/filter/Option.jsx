@@ -15,7 +15,7 @@ function Option({ children }) {
     <button
       disabled={active}
       onClick={() => setFilter(filterName)}
-      className={`cursor-pointer rounded-sm px-3 py-1 hover:bg-emerald-500 hover:text-gray-50 disabled:cursor-not-allowed ${active && "bg-emerald-500 text-gray-50"}`}
+      className={`cursor-pointer rounded-sm px-3 py-1 hover:bg-emerald-500 hover:text-gray-50 disabled:cursor-not-allowed hover:dark:text-gray-900 ${active && "bg-emerald-500 text-gray-50 dark:text-gray-900"}`}
     >
       {children}
     </button>

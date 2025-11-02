@@ -42,28 +42,32 @@ function CardStatistics() {
       <Statistic
         color="purple"
         value={products?.length}
-        icon={<ShoppingCart className="size-9 text-purple-400" />}
+        icon={
+          <ShoppingCart className="size-9 text-purple-400 dark:text-gray-50" />
+        }
       >
         Products
       </Statistic>
       <Statistic
         color="sky"
         value={filteredOrders?.length}
-        icon={<Package className="size-9 text-sky-400" />}
+        icon={<Package className="size-9 text-sky-400 dark:text-gray-50" />}
       >
         Orders
       </Statistic>
       <Statistic
         color="orange"
         value={categories?.length}
-        icon={<Bookmark className="size-9 text-orange-400" />}
+        icon={<Bookmark className="size-9 text-orange-400 dark:text-gray-50" />}
       >
         Categories
       </Statistic>
       <Statistic
         color="emerald"
         value={`$${revenue?.toLocaleString()}`}
-        icon={<Banknote className="size-9 text-emerald-400" />}
+        icon={
+          <Banknote className="size-9 text-emerald-400 dark:text-gray-50" />
+        }
       >
         Revenue
       </Statistic>

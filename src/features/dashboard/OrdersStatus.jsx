@@ -56,7 +56,7 @@ function OrdersStatus() {
   ];
 
   return (
-    <div className="rounded-md bg-gray-50 p-4">
+    <div className="rounded-md bg-gray-50 p-4 dark:bg-gray-800">
       <h3 className="text-xl font-semibold">Orders status summary</h3>
       <PieChart width={450} height={250}>
         <Pie
@@ -66,6 +66,7 @@ function OrdersStatus() {
           paddingAngle={3}
           innerRadius={75}
           isAnimationActive={true}
+          className="dark:stroke-0"
         >
           {data.map((el) => (
             <Cell fill={el.color} key={el.name} />

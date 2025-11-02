@@ -37,8 +37,8 @@ function Sales() {
   });
 
   return (
-    <div className="col-span-2 rounded-md bg-gray-50 p-4">
-      <h3 className="text-xl font-semibold">Sales from X to Y</h3>
+    <div className="col-span-2 rounded-md bg-gray-50 p-4 dark:bg-gray-800">
+      <h3 className="text-xl font-semibold">Recent sales</h3>
       <AreaChart
         width={"100%"}
         height={400}
@@ -47,18 +47,26 @@ function Sales() {
       >
         <defs>
           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
-            <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+            <stop
+              offset="5%"
+              stopColor="oklch(69.6% 0.17 162.48)"
+              stopOpacity={0.8}
+            />
+            <stop
+              offset="95%"
+              stopColor="oklch(69.6% 0.17 162.48)"
+              stopOpacity={0}
+            />
           </linearGradient>
         </defs>
-        <CartesianGrid strokeDasharray="3 3" />
+        <CartesianGrid strokeDasharray="10 10" />
         <XAxis dataKey="label" />
         <YAxis width="auto" />
         <Tooltip />
         <Area
           type="monotone"
           dataKey="orders"
-          stroke="#8884d8"
+          stroke="oklch(69.6% 0.17 162.48)"
           fillOpacity={1}
           fill="url(#colorUv)"
           isAnimationActive={true}

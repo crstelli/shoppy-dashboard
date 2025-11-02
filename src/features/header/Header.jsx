@@ -24,9 +24,9 @@ function Header() {
   const { isDark, switchTheme } = useDarkMode();
 
   return (
-    <div className="flex items-center justify-end gap-3 bg-gray-50 px-10 py-4 text-gray-600">
+    <div className="flex items-center justify-end gap-3 bg-gray-50 px-10 py-4 text-gray-600 dark:bg-gray-800 dark:text-gray-400">
       <div className="size-9 rounded-full bg-emerald-500"></div>
-      <h4 className="mr-4 text-gray-700">Giuseppe</h4>
+      <h4 className="mr-4 text-gray-700 dark:text-gray-300">Giuseppe</h4>
       <Link to="/account">
         <User className="cursor-pointer" />
       </Link>

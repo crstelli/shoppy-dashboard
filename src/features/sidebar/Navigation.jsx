@@ -34,7 +34,7 @@ function Item({ children, icon }) {
       <span id="sidebar-icon" className="text-gray-400">
         {icon}
       </span>
-      <span id="sidebar-text" className="text-gray-500">
+      <span id="sidebar-text" className="text-gray-500 dark:text-gray-400">
         {children}
       </span>
     </NavLink>

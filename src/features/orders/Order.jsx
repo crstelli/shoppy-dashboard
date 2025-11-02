@@ -11,7 +11,7 @@ function Order({ order, gridCols }) {
   if (order.status === "received") tagColor = "gray";
   if (order.status === "completed") tagColor = "green";
   if (order.status === "delivery") tagColor = "orange";
-  if (order.status === "cancelled") tagColor = "red";
+  if (order.status === "canceled") tagColor = "red";
 
   return (
     <>

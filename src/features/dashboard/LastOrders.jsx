@@ -11,7 +11,7 @@ function LastOrders() {
   const lastOrders = orders?.slice(0, 4);
 
   return (
-    <div className="flex h-full flex-col rounded-md bg-gray-50 p-4">
+    <div className="flex h-full flex-col rounded-md bg-gray-50 p-4 dark:bg-gray-800">
       <h3 className="text-xl font-semibold">Last orders</h3>
       <div className="mt-2 flex grow flex-col justify-between">
         <div className="grid grid-cols-[1fr_3fr_3fr_3fr] px-4 py-2 text-center font-bold">

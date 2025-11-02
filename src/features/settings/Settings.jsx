@@ -22,10 +22,10 @@ function Settings() {
   ) : (
     <div className="mx-auto grid w-[90%] max-w-[1200px] grid-cols-3 gap-10 overflow-y-auto py-4">
       <h3 className="col-span-3 text-3xl font-bold">Settings</h3>
-      <div className="col-span-2 mt-4 grid grid-cols-3 items-center gap-7 rounded-md bg-gray-50 p-6">
+      <div className="col-span-2 mt-4 grid grid-cols-3 items-center gap-7 rounded-md border border-gray-300 bg-gray-50 p-6 dark:border-gray-700 dark:bg-gray-800">
         <label>Delivery Price</label>
         <input
-          className="rounded-md border border-gray-400 px-4 py-1 text-sm"
+          className="rounded-md border border-gray-400 px-4 py-1 text-sm dark:border-gray-700"
           type="number"
           value={deliveryPrice || settings?.delivery_price}
           onChange={(e) => setDeliveryPrice(e.target.value)}
