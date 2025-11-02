@@ -8,8 +8,10 @@ import { Footer } from "./Footer";
 import { Title } from "./Title";
 import { Content } from "./Content";
 
-function Table({ children }) {
-  return <div className="flex flex-col text-center">{children}</div>;
+function Table({ children, classes }) {
+  return (
+    <div className={`flex flex-col text-center ${classes}`}>{children}</div>
+  );
 }
 
 Table.Title = Title;
