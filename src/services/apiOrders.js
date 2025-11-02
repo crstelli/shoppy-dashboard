@@ -1,7 +1,10 @@
 import { supabase } from "../supabase";
 
 export async function getOrders() {
-  const { data: orders, error } = await supabase.from("orders").select("*");
+  const { data: orders, error } = await supabase
+    .from("orders")
+    .select("*")
+    .order("created_at", { ascending: false });
 
   if (error) throw error;
   return orders;

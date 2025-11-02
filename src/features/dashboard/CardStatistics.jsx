@@ -24,7 +24,7 @@ function CardStatistics() {
     queryFn: getCategories,
   });
 
-  const revenue = orders.reduce((acc, ord) => acc + ord.total, 0);
+  const revenue = orders?.reduce((acc, ord) => acc + ord.total, 0);
 
   return (
     <div className="mt-10 grid grid-cols-4 gap-10 text-left">

@@ -22,12 +22,12 @@ function Order({ order }) {
 
   return (
     <div
-      className={`grid grid-cols-[1fr_2fr_1fr_2fr] rounded-md px-4 py-2 text-center text-sm ${bgColor}`}
+      className={`grid grid-cols-[1fr_3fr_3fr_3fr] items-center justify-items-center rounded-md px-4 py-2 text-sm ${bgColor}`}
     >
-      <span className="text-left">2</span>
-      <span className="text-md font-bold">$76</span>
-      <Tag color={tagColor}>Delivery</Tag>
-      <span>in 2 days</span>
+      <span className="justify-self-start">{order.id}</span>
+      <span className="text-md font-bold text-gray-600">${order.total}</span>
+      <Tag color={tagColor}>{order.status}</Tag>
+      <span>{new Date(order.delivery).toDateString()}</span>
     </div>
   );
 }
