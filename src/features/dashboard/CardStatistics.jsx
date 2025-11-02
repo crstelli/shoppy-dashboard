@@ -7,8 +7,13 @@ import { getCategories } from "../../services/apiCategories";
 import { Statistic } from "../../shared/components/Statistic";
 
 import { ShoppingCart, Package, Bookmark, Banknote } from "lucide-react";
+import { differenceInDays } from "date-fns";
+import { useFilter } from "../../shared/components/filter/useFilter";
 
 function CardStatistics() {
+  const { getFilter } = useFilter("last", "7days");
+  const daysFilter = Number(getFilter()?.replace("days", ""));
+
   const { data: products } = useQuery({
     queryKey: ["products"],
     queryFn: getProducts,
@@ -24,7 +29,13 @@ function CardStatistics() {
     queryFn: getCategories,
   });
 
-  const revenue = orders?.reduce((acc, ord) => acc + ord.total, 0);
+  const filteredOrders = orders?.filter(
+    (ord) =>
+      Math.abs(differenceInDays(new Date(ord.created_at), Date.now())) <
+      daysFilter,
+  );
+
+  const revenue = filteredOrders?.reduce((acc, ord) => acc + ord.total, 0);
 
   return (
     <div className="mt-10 grid grid-cols-4 gap-10 text-left">
@@ -37,7 +48,7 @@ function CardStatistics() {
       </Statistic>
       <Statistic
         color="sky"
-        value={orders?.length}
+        value={filteredOrders?.length}
         icon={<Package className="size-9 text-sky-400" />}
       >
         Orders
@@ -51,7 +62,7 @@ function CardStatistics() {
       </Statistic>
       <Statistic
         color="emerald"
-        value={`$${revenue}`}
+        value={`$${revenue?.toLocaleString()}`}
         icon={<Banknote className="size-9 text-emerald-400" />}
       >
         Revenue

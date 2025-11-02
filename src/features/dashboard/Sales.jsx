@@ -12,8 +12,8 @@ import { eachDayOfInterval, format, isSameDay, subDays } from "date-fns";
 import { useFilter } from "../../shared/components/filter/useFilter";
 
 function Sales() {
-  const { getFilter } = useFilter("last");
-  const daysFilter = Number(getFilter().replace("days", ""));
+  const { getFilter } = useFilter("last", "7days");
+  const daysFilter = Number(getFilter()?.replace("days", ""));
 
   const { data: orders } = useQuery({
     queryKey: ["orders"],

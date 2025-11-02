@@ -1,23 +1,34 @@
 import { useQuery } from "@tanstack/react-query";
 import { getOrders } from "../../services/apiOrders";
 import { Cell, Legend, Pie, PieChart, Tooltip } from "recharts";
+import { useFilter } from "../../shared/components/filter/useFilter";
+import { differenceInDays } from "date-fns";
 
 function OrdersStatus() {
+  const { getFilter } = useFilter("last", "7days");
+  const daysFilter = Number(getFilter()?.replace("days", ""));
+
   const { data: orders } = useQuery({
     queryKey: ["orders"],
     queryFn: getOrders,
   });
 
-  const completedOrders = orders?.filter(
+  const filteredOrders = orders?.filter(
+    (ord) =>
+      Math.abs(differenceInDays(new Date(ord.created_at), Date.now())) <
+      daysFilter,
+  );
+
+  const completedOrders = filteredOrders?.filter(
     (ord) => ord.status === "completed",
   ).length;
-  const deliveredOrders = orders?.filter(
+  const deliveredOrders = filteredOrders?.filter(
     (ord) => ord.status === "delivery",
   ).length;
-  const receivedOrders = orders?.filter(
+  const receivedOrders = filteredOrders?.filter(
     (ord) => ord.status === "received",
   ).length;
-  const canceledOrders = orders?.filter(
+  const canceledOrders = filteredOrders?.filter(
     (ord) => ord.status === "canceled",
   ).length;
 

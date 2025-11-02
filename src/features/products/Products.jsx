@@ -23,7 +23,7 @@ function Products() {
   const { products, handleAddProduct } = useProducts(setAddModal);
   const sections = ["ID", "Name", "Category", "Quantity", "Price", "Status"];
 
-  const { getFilter: getStatus } = useFilter("status");
+  const { getFilter: getStatus } = useFilter("status", "all");
   const statusFilter = getStatus();
 
   const { getSort } = useSort();

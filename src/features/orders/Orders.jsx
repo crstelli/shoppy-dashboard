@@ -22,7 +22,7 @@ function Orders() {
 
   const sections = ["ID", "Delivery", "Status"]; // TODO: Sistemare
 
-  const { getFilter: getStatus } = useFilter("status");
+  const { getFilter: getStatus } = useFilter("status", "all");
   const statusFilter = getStatus();
 
   const filteredOrders =
