@@ -4,9 +4,9 @@ import { FilterContext } from "./FilterContext";
 import { useFilter } from "./useFilter";
 
 function Option({ children }) {
-  const { name } = useContext(FilterContext);
+  const { name, defaultValue } = useContext(FilterContext);
 
-  const { getFilter, setFilter } = useFilter(name);
+  const { getFilter, setFilter } = useFilter(name, defaultValue);
   const filterName = children.toLowerCase().trim().replace(" ", "");
 
   const active = getFilter() === filterName;

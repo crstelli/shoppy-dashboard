@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import {
   Area,
   AreaChart,
@@ -6,85 +7,60 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-
-const data = [
-  {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
+import { getOrders } from "../../services/apiOrders";
+import { eachDayOfInterval, format, isSameDay, subDays } from "date-fns";
+import { useFilter } from "../../shared/components/filter/useFilter";
 
 function Sales() {
+  const { getFilter } = useFilter("last");
+  const daysFilter = Number(getFilter().replace("days", ""));
+
+  const { data: orders } = useQuery({
+    queryKey: ["orders"],
+    queryFn: getOrders,
+  });
+
+  const allDates = eachDayOfInterval({
+    start: subDays(new Date(), daysFilter - 1),
+    end: new Date(),
+  });
+
+  const data = allDates.map((date) => {
+    return {
+      label: format(date, "MMM dd"),
+      orders: orders?.reduce(
+        (acc, ord) =>
+          isSameDay(new Date(date), new Date(ord.created_at)) ? acc + 1 : acc,
+        0,
+      ),
+    };
+  });
+
   return (
     <div className="col-span-2 rounded-md bg-gray-50 p-4">
       <h3 className="text-xl font-semibold">Sales from X to Y</h3>
-      <AreaChart className="mt-6 h-[400px] w-full overflow-hidden" data={data}>
+      <AreaChart
+        width={"100%"}
+        height={400}
+        className="mt-6 overflow-hidden"
+        data={data}
+      >
         <defs>
           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
             <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
             <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
           </linearGradient>
-          <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8} />
-            <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
-          </linearGradient>
         </defs>
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
+        <XAxis dataKey="label" />
         <YAxis width="auto" />
         <Tooltip />
         <Area
           type="monotone"
-          dataKey="uv"
+          dataKey="orders"
           stroke="#8884d8"
           fillOpacity={1}
           fill="url(#colorUv)"
-          isAnimationActive={true}
-        />
-        <Area
-          type="monotone"
-          dataKey="pv"
-          stroke="#82ca9d"
-          fillOpacity={1}
-          fill="url(#colorPv)"
           isAnimationActive={true}
         />
       </AreaChart>

@@ -13,10 +13,10 @@ function Dashboard() {
         <Table.Header>
           <Table.Title>Dashboard</Table.Title>
           <Table.Operations>
-            <Filter name="last">
-              <Filter.Option>7-days</Filter.Option>
-              <Filter.Option>30-days</Filter.Option>
-              <Filter.Option>90-days</Filter.Option>
+            <Filter name="last" defaultValue="7days">
+              <Filter.Option>7 days</Filter.Option>
+              <Filter.Option>30 days</Filter.Option>
+              <Filter.Option>90 days</Filter.Option>
             </Filter>
           </Table.Operations>
         </Table.Header>

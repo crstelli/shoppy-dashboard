@@ -46,7 +46,7 @@ function OrdersStatus() {
 
   return (
     <div className="rounded-md bg-gray-50 p-4">
-      <h3 className="text-xl font-semibold">Sold products summary</h3>
+      <h3 className="text-xl font-semibold">Orders status summary</h3>
       <PieChart width={450} height={250}>
         <Pie
           data={data}

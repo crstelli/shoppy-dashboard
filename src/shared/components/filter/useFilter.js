@@ -1,10 +1,10 @@
 import { useSearchParams } from "react-router";
 
-function useFilter(name) {
+function useFilter(name, defaultValue) {
   const [searchParams, setSearchParams] = useSearchParams();
 
   function getFilter() {
-    const filter = searchParams.get(name) || "all";
+    const filter = searchParams.get(name) || defaultValue;
     return filter;
   }
 
