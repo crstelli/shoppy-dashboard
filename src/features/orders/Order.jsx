@@ -1,7 +1,8 @@
 import { useOrder } from "./useOrder";
-import { Table } from "../../shared/components/table/Table";
 
+import { Table } from "../../shared/components/table/Table";
 import { Menus } from "../../shared/components/menus/Menus";
+import { Tag } from "../../shared/components/Tag";
 
 function Order({ order, gridCols }) {
   const { handleDelete } = useOrder();
@@ -18,7 +19,7 @@ function Order({ order, gridCols }) {
         <Table.Cell>{order.id}</Table.Cell>
         <Table.Cell>{order.delivery}</Table.Cell>
         <Table.Cell>
-          <Table.Tag color={tagColor}>{order.status}</Table.Tag>
+          <Tag color={tagColor}>{order.status}</Tag>
         </Table.Cell>
         <Table.Cell>
           <Menus.Menu>

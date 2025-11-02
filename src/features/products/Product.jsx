@@ -7,6 +7,7 @@ import { Modal } from "../../shared/components/modal/Modal";
 import { Menus } from "../../shared/components/menus/Menus";
 
 import { DeleteModal } from "../../shared/components/DeleteModal";
+import { Tag } from "../../shared/components/Tag";
 
 function Product({ product, gridCols }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -28,7 +29,7 @@ function Product({ product, gridCols }) {
         <Table.Cell>{product.quantity}</Table.Cell>
         <Table.Cell>{product.price}</Table.Cell>
         <Table.Cell>
-          <Table.Tag color={tagColor}>{product.status}</Table.Tag>
+          <Tag color={tagColor}>{product.status}</Tag>
         </Table.Cell>
         <Table.Cell>
           <Menus.Menu>

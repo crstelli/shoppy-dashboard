@@ -1,12 +1,14 @@
-import { Statistic } from "../../shared/components/Statistic";
+import { CardStatistics } from "./CardStatistics";
+import { CategoriesChart } from "./CategoriesChart";
+import { Sales } from "./Sales";
+
 import { Table } from "../../shared/components/table/Table";
 import { Filter } from "../../shared/components/filter/Filter";
-
-import { ShoppingCart, Package, Bookmark, Banknote } from "lucide-react";
+import { LastOrders } from "./LastOrders";
 
 function Dashboard() {
   return (
-    <div className="mx-auto grid w-[90%] max-w-[1200px] grid-cols-2 gap-y-4 overflow-y-auto py-4">
+    <div className="mx-auto grid w-[90%] max-w-[1200px] grid-cols-2 gap-10 overflow-y-auto py-4">
       <Table classes={"col-span-2"}>
         <Table.Header>
           <Table.Title>Dashboard</Table.Title>
@@ -18,40 +20,11 @@ function Dashboard() {
             </Filter>
           </Table.Operations>
         </Table.Header>
-        <div className="mt-10 grid grid-cols-4 gap-20 text-left">
-          <Statistic
-            color="purple"
-            value="102"
-            icon={<ShoppingCart className="size-9 text-purple-400" />}
-          >
-            Products
-          </Statistic>
-          <Statistic
-            color="sky"
-            value="491"
-            icon={<Package className="size-9 text-sky-400" />}
-          >
-            Orders
-          </Statistic>
-          <Statistic
-            color="orange"
-            value="40"
-            icon={<Bookmark className="size-9 text-orange-400" />}
-          >
-            Categories
-          </Statistic>
-          <Statistic
-            color="emerald"
-            value={"$120"}
-            icon={<Banknote className="size-9 text-emerald-400" />}
-          >
-            Revenue
-          </Statistic>
-        </div>
+        <CardStatistics />
       </Table>
-      <div className="bg-gray-50 p-4">
-        <h4>Product Categories Summary</h4>
-      </div>
+      <LastOrders />
+      <CategoriesChart />
+      <Sales />
     </div>
   );
 }

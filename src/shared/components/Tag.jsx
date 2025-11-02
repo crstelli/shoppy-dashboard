@@ -7,7 +7,7 @@ function Tag({ children, color }) {
   if (color === "gray") bgColor = "bg-gray-300";
 
   return (
-    <span className={`rounded-full px-3 py-1 text-sm uppercase ${bgColor}`}>
+    <span className={`rounded-full px-3 py-1 text-center uppercase ${bgColor}`}>
       {children}
     </span>
   );

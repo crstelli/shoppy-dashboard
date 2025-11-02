@@ -1,5 +1,4 @@
 import { Operations } from "./Operations";
-import { Tag } from "./Tag";
 import { Cell } from "./Cell";
 import { Section } from "./Section";
 import { Header } from "./Header";
@@ -21,7 +20,6 @@ Table.Content = Content;
 Table.Section = Section;
 Table.Row = Row;
 Table.Cell = Cell;
-Table.Tag = Tag;
 Table.Footer = Footer;
 
 export { Table };
