@@ -1,5 +1,5 @@
 import { CardStatistics } from "./CardStatistics";
-import { CategoriesChart } from "./CategoriesChart";
+import { OrdersStatus } from "./OrdersStatus";
 import { Sales } from "./Sales";
 
 import { Table } from "../../shared/components/table/Table";
@@ -23,7 +23,7 @@ function Dashboard() {
         <CardStatistics />
       </Table>
       <LastOrders />
-      <CategoriesChart />
+      <OrdersStatus />
       <Sales />
     </div>
   );
