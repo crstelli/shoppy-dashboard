@@ -14,7 +14,10 @@ function Toggle({ id }) {
   }
 
   return (
-    <button onClick={handleClick} className="cursor-pointer">
+    <button
+      onClick={handleClick}
+      className="cursor-pointer rounded-sm p-1 hover:dark:bg-gray-700"
+    >
       <EllipsisVertical />
     </button>
   );

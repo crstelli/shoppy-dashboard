@@ -10,7 +10,10 @@ function Button({ children, onClick }) {
   }
 
   return (
-    <li onClick={handleClick} className="cursor-pointer">
+    <li
+      onClick={handleClick}
+      className="cursor-pointer px-10 py-1 dark:hover:bg-gray-900"
+    >
       {children}
     </li>
   );
