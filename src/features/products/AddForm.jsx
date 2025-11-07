@@ -55,6 +55,13 @@ function AddForm({ onSubmit }) {
         <option value="hidden">Hidden</option>
       </Form.Select>
 
+      <Form.Label>Image</Form.Label>
+      <Form.Input
+        accept="image/*"
+        type="file"
+        {...register("image", { required: true })}
+      />
+
       <Form.Submit classes={"mt-6"} type="submit">
         Add
       </Form.Submit>

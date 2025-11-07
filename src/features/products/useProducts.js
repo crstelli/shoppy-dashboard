@@ -5,6 +5,7 @@ import {
 } from "../../services/apiProducts";
 
 import toast from "react-hot-toast";
+import { URL } from "../../supabase";
 
 function useProducts(setAddModal) {
   const queryClient = useQueryClient();
@@ -28,8 +29,12 @@ function useProducts(setAddModal) {
   });
 
   function handleAddProduct(data, reset) {
-    addProduct(data);
+    const image_file = data.image[0];
+    const image_name = `${Math.random()}-${image_file.name.replaceAll("/", "").replaceAll(" ", "")}`;
+    const image_path = `${URL}/storage/v1/object/public/images/${image_name}`;
+    const { image: _, ...item } = { ...data, image_path };
 
+    addProduct({ item, image: { image_file, image_name } });
     reset();
     setAddModal(false);
   }

@@ -70,49 +70,44 @@ function Products() {
 
   return (
     <div className="mx-auto w-[90%] max-w-[1200px] overflow-y-auto py-4">
-      {products?.length > 0 ? (
-        <Menus>
-          <Table>
-            <Table.Header>
-              <Table.Title>All Products</Table.Title>
-              <Table.Operations>
-                <Filter name="status">
-                  <Filter.Option>All</Filter.Option>
-                  <Filter.Option>Active</Filter.Option>
-                  <Filter.Option>Sold Out</Filter.Option>
-                  <Filter.Option>Hidden</Filter.Option>
-                </Filter>
-                <Sort>
-                  {sortOptions.map((opt) => (
-                    <Sort.Option key={opt.value} opt={opt} />
-                  ))}
-                </Sort>
-                <Button onClick={() => setAddModal(true)}>Add Product</Button>
-              </Table.Operations>
-            </Table.Header>
-            <Table.Content>
-              <Table.Section
+      <Menus>
+        <Table>
+          <Table.Header>
+            <Table.Title>All Products</Table.Title>
+            <Table.Operations>
+              <Filter name="status">
+                <Filter.Option>All</Filter.Option>
+                <Filter.Option>Active</Filter.Option>
+                <Filter.Option>Sold Out</Filter.Option>
+                <Filter.Option>Hidden</Filter.Option>
+              </Filter>
+              <Sort>
+                {sortOptions.map((opt) => (
+                  <Sort.Option key={opt.value} opt={opt} />
+                ))}
+              </Sort>
+              <Button onClick={() => setAddModal(true)}>Add Product</Button>
+            </Table.Operations>
+          </Table.Header>
+          <Table.Content>
+            <Table.Section
+              gridCols={"1fr 3fr 3fr 2fr 2fr 3fr 2fr"}
+              sections={sections}
+            />
+            {paginatedProducts.map((p) => (
+              <Product
+                key={p.id}
+                product={p}
                 gridCols={"1fr 3fr 3fr 2fr 2fr 3fr 2fr"}
-                sections={sections}
               />
-              {paginatedProducts.map((p) => (
-                <Product
-                  key={p.id}
-                  product={p}
-                  gridCols={"1fr 3fr 3fr 2fr 2fr 3fr 2fr"}
-                />
-              ))}
-            </Table.Content>
-            <Table.Footer>
-              <Pagination count={sortedProducts?.length} />
-            </Table.Footer>
-          </Table>
-        </Menus>
-      ) : (
-        <div className="mt-40">
-          <p className="text-center font-bold">You have no products</p>
-        </div>
-      )}
+            ))}
+          </Table.Content>
+          <Table.Footer>
+            <Pagination count={sortedProducts?.length} />
+          </Table.Footer>
+        </Table>
+      </Menus>
+
       {addModal && (
         <Modal onClose={() => setAddModal(false)}>
           <AddForm onSubmit={handleAddProduct} />
