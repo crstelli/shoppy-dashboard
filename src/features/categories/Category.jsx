@@ -2,6 +2,7 @@ import { useCategory } from "./useCategory";
 import { Table } from "../../shared/components/table/Table";
 
 import { Menus } from "../../shared/components/menus/Menus";
+import { Trash } from "lucide-react";
 
 function Category({ category, gridCols }) {
   const { handleDelete } = useCategory();
@@ -17,6 +18,7 @@ function Category({ category, gridCols }) {
 
             <Menus.List id={category.id}>
               <Menus.Button onClick={() => handleDelete(category.id)}>
+                <Trash size={22} />
                 Delete
               </Menus.Button>
             </Menus.List>

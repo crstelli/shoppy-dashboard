@@ -10,7 +10,7 @@ function List({ id, children }) {
 
   return createPortal(
     <ul
-      className="fixed flex flex-col gap-1 rounded-md border border-gray-700 bg-gray-50 py-2 text-lg font-medium shadow-xl/25 dark:bg-gray-800"
+      className="fixed flex flex-col overflow-hidden rounded-md border border-gray-700 bg-gray-50 text-lg font-medium shadow-xl/25 dark:bg-gray-800"
       style={{
         top: y,
         right: x,

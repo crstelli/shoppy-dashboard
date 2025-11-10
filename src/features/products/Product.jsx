@@ -8,6 +8,7 @@ import { Menus } from "../../shared/components/menus/Menus";
 
 import { ConfirmModal } from "../../shared/components/ConfirmModal";
 import { Tag } from "../../shared/components/Tag";
+import { PenBox, Trash } from "lucide-react";
 
 function Product({ product, gridCols }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -37,9 +38,10 @@ function Product({ product, gridCols }) {
 
             <Menus.List id={product.id}>
               <Menus.Button onClick={() => setIsEditing(true)}>
-                Edit
+                <PenBox /> Edit
               </Menus.Button>
               <Menus.Button onClick={() => setIsDeleting(true)}>
+                <Trash />
                 Delete
               </Menus.Button>
             </Menus.List>

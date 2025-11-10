@@ -12,7 +12,7 @@ function Button({ children, onClick }) {
   return (
     <li
       onClick={handleClick}
-      className="flex cursor-pointer items-center gap-2 px-10 py-1 dark:hover:bg-gray-900"
+      className="flex cursor-pointer items-center gap-3 px-10 py-2 dark:hover:bg-gray-900"
     >
       {children}
     </li>
