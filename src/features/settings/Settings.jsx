@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   getSettings,
@@ -9,6 +9,7 @@ import { Spinner } from "../../shared/components/Spinner";
 import toast from "react-hot-toast";
 
 function Settings() {
+  const [deliveryPrice, setDeliveryPrice] = useState(0);
   const queryClient = useQueryClient();
 
   const { data: settings, isLoading } = useQuery({
@@ -25,7 +26,9 @@ function Settings() {
     },
   });
 
-  const [deliveryPrice, setDeliveryPrice] = useState(settings.delivery_price);
+  useEffect(() => {
+    if (!isLoading) setDeliveryPrice(settings?.delivery_price);
+  }, [settings, isLoading]);
 
   return isLoading ? (
     <Spinner />
@@ -38,7 +41,7 @@ function Settings() {
           className="rounded-md border border-gray-400 px-4 py-1 text-sm focus:border-emerald-500 focus:outline-none dark:border-gray-700"
           type="number"
           value={deliveryPrice}
-          onChange={(e) => setDeliveryPrice(+e.target.value)}
+          onChange={(e) => setDeliveryPrice(e.target.value)}
           onBlur={() => {
             if (deliveryPrice !== settings?.delivery_price) {
               updateSettings({ ...settings, delivery_price: deliveryPrice });
