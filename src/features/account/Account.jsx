@@ -20,7 +20,7 @@ function Account() {
           className="rounded-md border border-gray-400 px-4 py-1 text-sm disabled:bg-gray-300 disabled:text-gray-500 dark:border-gray-700 dark:disabled:bg-gray-700 dark:disabled:text-gray-400"
           type="email"
           disabled
-          value={user.email}
+          value={user?.email}
         />
         <div></div>
 
