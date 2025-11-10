@@ -7,8 +7,11 @@ function Toggle({ id }) {
   const { openId, open, close, setPosition } = useContext(MenusContext);
 
   function handleClick(e) {
-    const { top, left } = e.target.closest("button").getBoundingClientRect();
-    setPosition({ top, left });
+    const rect = e.target.closest("button").getBoundingClientRect();
+    setPosition({
+      x: window.innerWidth - rect.width - rect.x,
+      y: rect.y + rect.height + 8,
+    });
 
     openId === id ? close() : open(id);
   }
