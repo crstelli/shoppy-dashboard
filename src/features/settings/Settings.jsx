@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import {
   getSettings,
   updateSettings as updateSettingsApi,
 } from "../../services/apiSettings";
-import { useState } from "react";
+
+import { Spinner } from "../../shared/components/Spinner";
 
 function Settings() {
   const [deliveryPrice, setDeliveryPrice] = useState("");
@@ -18,7 +20,7 @@ function Settings() {
   });
 
   return isLoading ? (
-    <p>loading</p>
+    <Spinner />
   ) : (
     <div className="mx-auto grid w-[90%] max-w-[1200px] grid-cols-3 gap-10 overflow-y-auto py-4">
       <h3 className="col-span-3 text-3xl font-bold">Settings</h3>

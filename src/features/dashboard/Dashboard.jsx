@@ -1,13 +1,15 @@
+import { useQuery } from "@tanstack/react-query";
+import { getOrders } from "../../services/apiOrders";
+
 import { CardStatistics } from "./CardStatistics";
 import { OrdersStatus } from "./OrdersStatus";
 import { Sales } from "./Sales";
+import { LastOrders } from "./LastOrders";
 
 import { Table } from "../../shared/components/table/Table";
 import { Filter } from "../../shared/components/filter/Filter";
-import { LastOrders } from "./LastOrders";
-import { useQuery } from "@tanstack/react-query";
-import { getOrders } from "../../services/apiOrders";
 import { Section } from "../../shared/components/Section";
+import { Spinner } from "../../shared/components/Spinner";
 
 function Dashboard() {
   const { isLoading } = useQuery({
@@ -16,7 +18,7 @@ function Dashboard() {
   });
 
   return isLoading ? (
-    <p>loading</p>
+    <Spinner />
   ) : (
     <Section>
       <Table classes={"col-span-2"}>

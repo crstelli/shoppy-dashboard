@@ -7,7 +7,7 @@ import { login } from "../../services/apiAuth";
 function useLogin() {
   const navigate = useNavigate();
 
-  const { mutate: handleLogin } = useMutation({
+  const { mutate: handleLogin, isPending } = useMutation({
     mutationFn: ({ data }) => {
       const { email, password } = data;
       if (!email || !password) return;
@@ -28,7 +28,7 @@ function useLogin() {
     },
   });
 
-  return { handleLogin };
+  return { handleLogin, isPending };
 }
 
 export { useLogin };

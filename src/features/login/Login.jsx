@@ -3,13 +3,14 @@ import { useLogin } from "./useLogin";
 
 import { Form } from "../../shared/components/form/Form";
 import { TextLogo } from "../../shared/components/TextLogo";
+import { Spinner } from "../../shared/components/Spinner";
 
 function Login() {
   const { register, handleSubmit, reset } = useForm();
-  const { handleLogin } = useLogin();
+  const { handleLogin, isPending } = useLogin();
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-12">
+    <div className="flex h-full w-full flex-col items-center justify-center gap-12 dark:bg-gray-900">
       <TextLogo />
       <div className="w-[90%] max-w-[400px]">
         <Form onSubmit={handleSubmit((data) => handleLogin({ data, reset }))}>
@@ -29,7 +30,12 @@ function Login() {
             {...register("password", { required: true })}
           />
 
-          <Form.Submit classes={"mt-4"}>Log In</Form.Submit>
+          <Form.Submit
+            disabled={isPending}
+            classes={"mt-4 flex items-center justify-center"}
+          >
+            {isPending ? <Spinner size="size-7" /> : "Log In"}
+          </Form.Submit>
         </Form>
       </div>
     </div>
