@@ -1,16 +1,84 @@
-# React + Vite
+# Shoppy Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Shoppy Dashboard is a modern and intuitive web application designed for owners of [Shoppy Website](https://github.com/crstelli/shoppy-website) to efficiently manage their business operations. It provides tools to add and edit products, track and fulfill orders, monitor sales performance, and visualize key business metrics through clean, responsive dashboards.
 
-Currently, two official plugins are available:
+![Homepage](./images/Dashboard.png)
+![Products](./images/Products.png)
+![Dark Mode](./images/Darkmode.png)
+![Account](./images/Account.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## React Compiler
+- Vite
+- React 19.1.1
+- TailwindCSS 4.1.14
+- Tanstack Query
+- React Router
+- Supabase
+- date-fns
+- lucide-react
+- react-hook-form
+- react-hot-toast
+- recharts
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Installation
 
-## Expanding the ESLint configuration
+Clone the repository:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+git clone https://github.com/crstelli/shoppy-dashboard
+```
+
+Navigate into project folder:
+
+```bash
+cd shoppy-dashboard
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Open your browser and navigate to:
+
+```bash
+http://localhost:5173
+```
+
+## Environment Variables
+
+You need to configure environment variables for the app to work correctly. Create a .env.local file in the project root and add:
+
+```env
+VITE_SUPABASE_URL=Your Supabase URL
+VITE_SUPABASE_ANON_KEY=Your Supabase Key
+```
+
+## Features
+
+- Authentication and new account creations.
+- Complete Dashboard with all data about orders and products, filtered by time range.
+- Product creation, editing and deleting.
+- Sorting by filtering, name and status, filtering by status.
+- Pagination.
+- Synchronized settings updating.
+- User profile settings.
+- Dark and light mode.
+
+## Future Improvements
+
+- Order Tracking with notifications.
+- Chat with users.
+- Automatic order status updating.
+
+## Author
+
+Giuseppe - [LinkedIn](https://linkedin.com/in/crescitelli) - [Portfolio](https://crescitelli.dev/)
