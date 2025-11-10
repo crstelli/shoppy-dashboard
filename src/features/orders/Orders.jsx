@@ -1,14 +1,9 @@
-import { useState } from "react";
 import { useOrders } from "./useOrders";
 
 import { Order } from "./Order";
-import { AddForm } from "./AddForm";
 
 import { Table } from "../../shared/components/table/Table";
 import { Menus } from "../../shared/components/menus/Menus";
-import { Modal } from "../../shared/components/modal/Modal";
-
-import { Button } from "../../shared/components/Button";
 
 import { Filter } from "../../shared/components/filter/Filter";
 import { Pagination } from "../../shared/components/pagination/Pagination";
@@ -17,10 +12,9 @@ import { usePagination } from "../../shared/components/pagination/usePagination"
 import { PAGE_SIZE } from "../../shared/constansts";
 
 function Orders() {
-  const [addModal, setAddModal] = useState(false);
-  const { orders, handleAddOrder } = useOrders(setAddModal);
+  const { orders } = useOrders();
 
-  const sections = ["ID", "Delivery", "Status"]; // TODO: Sistemare
+  const sections = ["ID", "User", "Total", "Info", "Delivery", "Status"]; // TODO: Sistemare
 
   const { getFilter: getStatus } = useFilter("status", "all");
   const statusFilter = getStatus();
@@ -53,13 +47,19 @@ function Orders() {
                   <Filter.Option>Completed</Filter.Option>
                   <Filter.Option>Delivery</Filter.Option>
                 </Filter>
-                <Button onClick={() => setAddModal(true)}>Create Order</Button>
               </Table.Operations>
             </Table.Header>
             <Table.Content>
-              <Table.Section gridCols={"1fr 3fr 3fr 1fr"} sections={sections} />
+              <Table.Section
+                gridCols={"1fr 2fr 1fr 2fr 2fr 1fr .5fr"}
+                sections={sections}
+              />
               {paginatedOrders.map((c) => (
-                <Order key={c.id} order={c} gridCols={"1fr 3fr 3fr 1fr"} />
+                <Order
+                  key={c.id}
+                  order={c}
+                  gridCols={"1fr 2fr 1fr 2fr 2fr 1fr .5fr"}
+                />
               ))}
             </Table.Content>
             <Table.Footer>
@@ -71,11 +71,6 @@ function Orders() {
         <div className="mt-40">
           <p className="text-center font-bold">You have no orders</p>
         </div>
-      )}
-      {addModal && (
-        <Modal onClose={() => setAddModal(false)}>
-          <AddForm onSubmit={handleAddOrder} />
-        </Modal>
       )}
     </div>
   );

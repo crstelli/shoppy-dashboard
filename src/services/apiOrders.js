@@ -21,3 +21,12 @@ export async function deleteOrder(id) {
 
   if (error) throw error;
 }
+
+export async function editOrderStatus(status, id) {
+  const { error } = await supabase
+    .from("orders")
+    .update({ status })
+    .eq("id", id);
+
+  if (error) throw error;
+}
