@@ -1,4 +1,3 @@
-import { SectionItem } from "../shared/components/table/SectionItem";
 import { supabase } from "../supabase";
 
 export async function getProducts() {

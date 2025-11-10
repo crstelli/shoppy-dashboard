@@ -1,4 +1,5 @@
 import { Tag } from "../../shared/components/Tag";
+import { formatDistanceToNow } from "date-fns";
 
 function Order({ order }) {
   let bgColor, tagColor;
@@ -27,7 +28,7 @@ function Order({ order }) {
       <span className="justify-self-start">{order.id}</span>
       <span className="text-md text-gray-60 font-bold">${order.total}</span>
       <Tag color={tagColor}>{order.status}</Tag>
-      <span>{new Date(order.delivery).toDateString()}</span>
+      <span>{formatDistanceToNow(new Date(order.created_at))} ago</span>
     </div>
   );
 }

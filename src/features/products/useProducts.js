@@ -19,7 +19,7 @@ function useProducts(setAddModal) {
   const { mutate: addProduct } = useMutation({
     mutationFn: addProductApi,
     onSuccess: () => {
-      toast.success("Product addedd succesfully.");
+      toast.success("Product added succesfully.");
       queryClient.invalidateQueries({ queryKey: ["products"] });
     },
 

@@ -27,7 +27,6 @@ function Products() {
   const statusFilter = getStatus();
 
   const { getSort } = useSort();
-
   const { getPage } = usePagination();
 
   const filteredProducts =
@@ -45,9 +44,10 @@ function Products() {
   );
 
   const currPage = getPage();
-  const paginatedProducts = sortedProducts?.filter((p, i) => {
-    if (i >= (currPage - 1) * PAGE_SIZE && i < PAGE_SIZE * currPage) return p;
-  });
+  const paginatedProducts =
+    sortedProducts?.filter((p, i) => {
+      if (i >= (currPage - 1) * PAGE_SIZE && i < PAGE_SIZE * currPage) return p;
+    }) || [];
 
   const sortOptions = [
     {
