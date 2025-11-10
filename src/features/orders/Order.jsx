@@ -23,8 +23,10 @@ function Order({ order, gridCols }) {
         <Table.Cell>${order.total}</Table.Cell>
         <Table.Cell>{order.info || "No Info"}</Table.Cell>
         <Table.Cell>{order.delivery || "Unknown"}</Table.Cell>
-        <Table.Cell classes={"self-center"}>
-          <Tag color={tagColor}>{order.status}</Tag>
+        <Table.Cell classes={"self-center flex"}>
+          <Tag color={tagColor} classes={"w-full"}>
+            {order.status}
+          </Tag>
         </Table.Cell>
         <Table.Cell>
           <Menus.Menu>

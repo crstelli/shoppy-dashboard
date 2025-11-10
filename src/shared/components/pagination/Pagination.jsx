@@ -23,18 +23,23 @@ function Pagination({ count }) {
 
   return (
     <div className="flex items-center justify-between">
-      <p>
-        Showing{" "}
-        <span className="font-bold">
-          {(currentPage - 1) * PAGE_SIZE + 1} to{" "}
-          {currentPage === pageCount ? count : currentPage * PAGE_SIZE}
-        </span>{" "}
-        results out of <span className="font-bold">{count}</span>.
-      </p>
-      <div className="flex gap-2">
-        <ButtonPrev onClick={prevPage} />
-        <ButtonNext onClick={nextPage} />
-      </div>
+      {count > 0 && (
+        <>
+          <p>
+            Showing{" "}
+            <span className="font-bold">
+              {(currentPage - 1) * PAGE_SIZE + 1} to{" "}
+              {currentPage === pageCount ? count : currentPage * PAGE_SIZE}
+            </span>{" "}
+            results out of <span className="font-bold">{count}</span>.
+          </p>
+
+          <div className="flex gap-2">
+            <ButtonPrev onClick={prevPage} />
+            <ButtonNext onClick={nextPage} />
+          </div>
+        </>
+      )}
     </div>
   );
 }

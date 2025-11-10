@@ -40,12 +40,6 @@ function Settings() {
           value={deliveryPrice}
           onChange={(e) => setDeliveryPrice(+e.target.value)}
           onBlur={() => {
-            // if (deliveryPrice !== settings?.delivery_price)
-            //   console.log(Number(deliveryPrice), settings?.delivery_price);
-            // updateSettings({
-            //   ...settings,
-            //   delivery_price: deliveryPrice,
-            // });
             if (deliveryPrice !== settings?.delivery_price) {
               updateSettings({ ...settings, delivery_price: deliveryPrice });
             }

@@ -1,4 +1,4 @@
-function Tag({ children, color }) {
+function Tag({ children, color, classes }) {
   let bgColor;
 
   if (color === "green") bgColor = "bg-green-300 dark:bg-green-400";
@@ -8,7 +8,7 @@ function Tag({ children, color }) {
 
   return (
     <span
-      className={`rounded-full px-3 py-1 text-center uppercase dark:text-gray-800 ${bgColor}`}
+      className={`w-full rounded-full px-3 py-1 text-center uppercase dark:text-gray-800 ${bgColor} ${classes}`}
     >
       {children}
     </span>

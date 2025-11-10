@@ -51,16 +51,22 @@ function Orders() {
             </Table.Header>
             <Table.Content>
               <Table.Section
-                gridCols={"1fr 2fr 1fr 2fr 2fr 1fr .5fr"}
+                gridCols={"1fr 2fr 1fr 2fr 2fr 125px .5fr"}
                 sections={sections}
               />
-              {paginatedOrders.map((c) => (
-                <Order
-                  key={c.id}
-                  order={c}
-                  gridCols={"1fr 2fr 1fr 2fr 2fr 1fr .5fr"}
-                />
-              ))}
+              {paginatedOrders.length > 0 ? (
+                paginatedOrders.map((c) => (
+                  <Order
+                    key={c.id}
+                    order={c}
+                    gridCols={"1fr 2fr 1fr 2fr 2fr 125px .5fr"}
+                  />
+                ))
+              ) : (
+                <h2 className="bg-gray-800 py-4 text-2xl">
+                  No orders, please adjust filters
+                </h2>
+              )}
             </Table.Content>
             <Table.Footer>
               <Pagination count={paginatedOrders.length} />
