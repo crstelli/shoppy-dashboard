@@ -20,7 +20,7 @@ function useOrder() {
     mutationFn: (id) => editOrderStatus("delivery", id),
     onSuccess: () => {
       queryClient.invalidateQueries(["orders"]);
-      toast.success("Order eliminated successfully.");
+      toast.success("Order status setted to Delivery.");
     },
 
     onError: (error) => {
@@ -32,7 +32,7 @@ function useOrder() {
     mutationFn: (id) => editOrderStatus("completed", id),
     onSuccess: () => {
       queryClient.invalidateQueries(["orders"]);
-      toast.success("Order eliminated successfully.");
+      toast.success("Order status setted to Completed.");
     },
 
     onError: (error) => {
@@ -44,7 +44,7 @@ function useOrder() {
     mutationFn: (id) => editOrderStatus("canceled", id),
     onSuccess: () => {
       queryClient.invalidateQueries(["orders"]);
-      toast.success("Order eliminated successfully.");
+      toast.success("Order status setted to Canceled.");
     },
 
     onError: (error) => {

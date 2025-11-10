@@ -26,7 +26,7 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <DesktopOnly>
-        <Toaster />
+        <Toaster toastOptions={{ className: "toast" }} />
         <DarkModeProvider>
           <BrowserRouter>
             <Routes>

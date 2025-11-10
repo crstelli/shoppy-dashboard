@@ -16,3 +16,8 @@ body,
 .active #sidebar-text {
   @apply font-bold text-gray-600 dark:text-gray-300;
 }
+
+.dark .toast {
+  background-color: oklch(21% 0.034 264.665) !important;
+  color: oklch(87.2% 0.01 258.338) !important;
+}
