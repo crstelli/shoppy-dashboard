@@ -1,5 +1,7 @@
 import { supabase } from "../supabase";
 
+import { DEV_MODE, DEV_MODE_MESSAGE } from "../shared/constansts";
+
 export async function getCategories() {
   const { data: categories, error } = await supabase
     .from("categories")
@@ -10,9 +12,11 @@ export async function getCategories() {
 }
 
 export async function addCategory(data) {
-  const { error } = await supabase.from("categories").insert(data);
+  if (!DEV_MODE) {
+    const { error } = await supabase.from("categories").insert(data);
 
-  if (error) throw error;
+    if (error) throw error;
+  } else throw new Error(DEV_MODE_MESSAGE);
 }
 
 export async function deleteCategory(id) {

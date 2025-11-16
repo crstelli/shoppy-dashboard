@@ -1,3 +1,4 @@
+import { DEV_MODE, DEV_MODE_MESSAGE } from "../shared/constansts";
 import { supabase } from "../supabase";
 
 export async function login({ email, password }) {
@@ -11,13 +12,15 @@ export async function login({ email, password }) {
 }
 
 export async function signup({ email, password }) {
-  const { data, error } = await supabase.auth.signUp({ email, password });
+  if (!DEV_MODE) {
+    const { data, error } = await supabase.auth.signUp({ email, password });
 
-  if (error) throw error;
-  return data;
+    if (error) throw error;
+    return data;
+  } else {
+    throw new Error(DEV_MODE_MESSAGE);
+  }
 }
-
-// export async function changePassword
 
 export async function getUser() {
   const { data, error } = await supabase.auth.getUser();
@@ -28,13 +31,6 @@ export async function getUser() {
 
 export async function logout() {
   const { data, error } = await supabase.auth.signOut();
-
-  if (error) throw error;
-  return data;
-}
-
-export async function getUserList() {
-  const { data, error } = await supabase.auth.admin.listUsers();
 
   if (error) throw error;
   return data;

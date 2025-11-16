@@ -24,6 +24,10 @@ function Settings() {
       toast.success("Settings updated!");
       queryClient.invalidateQueries("settings");
     },
+
+    onError: (error) => {
+      toast.error(error.message);
+    },
   });
 
   useEffect(() => {
