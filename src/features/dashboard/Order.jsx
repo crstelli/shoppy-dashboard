@@ -23,7 +23,7 @@ function Order({ order }) {
 
   return (
     <div
-      className={`grid grid-cols-[1fr_3fr_3fr_3fr] items-center justify-items-center rounded-md px-4 py-2 text-sm dark:text-gray-300 ${bgColor}`}
+      className={`grid grid-cols-[1fr_2fr_3fr_3fr] items-center justify-items-center rounded-md px-4 py-2 text-sm dark:text-gray-300 ${bgColor}`}
     >
       <span className="justify-self-start">{order.id}</span>
       <span className="text-md text-gray-60 font-bold">${order.total}</span>

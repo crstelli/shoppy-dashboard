@@ -20,7 +20,9 @@ export async function addCategory(data) {
 }
 
 export async function deleteCategory(id) {
-  const { error } = await supabase.from("categories").delete().eq("id", id);
+  if (!DEV_MODE) {
+    const { error } = await supabase.from("categories").delete().eq("id", id);
 
-  if (error) throw error;
+    if (error) throw error;
+  } else throw new Error(DEV_MODE_MESSAGE);
 }
