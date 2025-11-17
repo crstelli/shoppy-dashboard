@@ -5,19 +5,19 @@ function Order({ order }) {
   let bgColor, tagColor;
 
   if (order.status === "completed") {
-    bgColor = "bg-green-100/75 dark:bg-green-500/35";
+    bgColor = "bg-green-100/75 dark:bg-green-500/20";
     tagColor = "green";
   }
   if (order.status === "delivery") {
-    bgColor = "bg-orange-100/75 dark:bg-orange-500/35";
+    bgColor = "bg-orange-100/75 dark:bg-orange-500/20";
     tagColor = "orange";
   }
   if (order.status === "canceled") {
-    bgColor = "bg-red-100/75 dark:bg-red-500/35";
+    bgColor = "bg-red-100/75 dark:bg-red-500/20";
     tagColor = "red";
   }
   if (order.status === "received") {
-    bgColor = "bg-gray-100/75 dark:bg-gray-400/35";
+    bgColor = "bg-gray-100/75 dark:bg-gray-400/20";
     tagColor = "gray";
   }
 
@@ -27,7 +27,9 @@ function Order({ order }) {
     >
       <span className="justify-self-start">{order.id}</span>
       <span className="text-md text-gray-60 font-bold">${order.total}</span>
-      <Tag color={tagColor}>{order.status}</Tag>
+      <Tag color={tagColor} classes={"font-semibold"}>
+        {order.status}
+      </Tag>
       <span>{formatDistanceToNow(new Date(order.created_at))} ago</span>
     </div>
   );

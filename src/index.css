@@ -21,3 +21,11 @@ body,
   background-color: oklch(21% 0.034 264.665) !important;
   color: oklch(87.2% 0.01 258.338) !important;
 }
+
+.recharts-default-tooltip {
+  @apply rounded-md border-0! dark:bg-gray-900!;
+}
+
+.recharts-tooltip-item {
+  @apply dark:text-gray-200!;
+}
